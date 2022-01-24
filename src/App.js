@@ -1,10 +1,18 @@
 import './App.css';
 import { Formik, Form, Field, ErrorMessage} from "formik"
 import * as yup from "yup"
+import Axios from "axios"
 
 function App() {
 
-  const handleClickRegister = (values) => console.log(values)
+  const handleClickRegister = (values) => {
+    Axios.post("https://localhost:5000/register", {
+      email: values.email,
+      password: values.password,
+    }).then((response) => {
+      console.log(response)
+    })
+  }
 
   const handleClickLogin = (values) => console.log(values)
 
